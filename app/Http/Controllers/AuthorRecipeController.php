@@ -51,6 +51,7 @@ class AuthorRecipeController extends Controller
 
         $recipe = Recipe::create([
             'title' => $validated['title'],
+            'slug' => Str::slug($validated['title'], '-'),
             'description' => $validated['description'],
             'image' => $imagePath,
             'category_id' => $validated['category_id'],
@@ -119,6 +120,7 @@ class AuthorRecipeController extends Controller
 
         $recipe->update([
             'title' => $validated['title'],
+            'slug' => Str::slug($validated['title'], '-'),
             'description' => $validated['description'],
             'category_id' => $validated['category_id'],
             'cooking_time' => $validated['cooking_time'],
