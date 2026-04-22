@@ -15,7 +15,7 @@ class AuthorRecipeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('can:be-author')->except(['index', 'show']); // но show обычно публичный
+        $this->middleware('can:be-author')->except(['index', 'show']);
     }
 
     public function index()
