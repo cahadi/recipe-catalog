@@ -51,6 +51,7 @@ class AuthorRecipeController extends Controller
 
         $recipe = Recipe::create([
             'title' => $validated['title'],
+            'slug' => Str::slug($validated['title'], '-'),
             'description' => $validated['description'],
             'image' => $imagePath,
             'category_id' => $validated['category_id'],
@@ -99,6 +100,7 @@ class AuthorRecipeController extends Controller
 
         $validated = $request->validate([
             'title' => 'required|string|max:255',
+            'slug' => Str::slug($validated['title'], '-'),
             'description' => 'required|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'category_id' => 'required|exists:categories,id',
